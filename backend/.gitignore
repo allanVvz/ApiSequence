@@ -1,0 +1,86 @@
+# Python-related
+*.pyc
+__pycache__/
+.env
+.venv/
+*.log
+*.db
+*.sqlite3
+*.pkl
+.envrc
+*.swp
+*.swo
+*.tmp
+*.bak
+
+# Node-related
+node_modules/
+dist/
+build/
+*.npm
+package-lock.json
+.pnp
+.pnp.js
+
+# CSVs and data files
+CANDataChunks/*.csv
+*.xlsx
+
+# IDE and OS-related
+.DS_Store
+.idea/
+.vscode/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Python testing-related
+.coverage
+coverage/
+htmlcov/
+.mypy_cache/
+.pytest_cache/
+
+# Miscellaneous
+*.egg-info/
+*.spec
+*.exe
+*.dll
+*.so
+*.dylib
+logs/
+.cache/
+.npm/
+
+# Archive files
+*.tar.gz
+*.zip
+*.tar
+*.rar
+*.7z
+
+# Media files
+*.pdf
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.ico
+*.tif
+*.tiff
+*.svg
+*.webp
+*.mp4
+*.mkv
+*.avi
+*.mp3
+*.wav
+*.flac
+*.aac
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
