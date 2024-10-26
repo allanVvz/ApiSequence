@@ -1,10 +1,12 @@
 from fastapi import FastAPI, UploadFile, File
 import pandas as pd
 import uvicorn
-from indb import process_dataframe, get_processed_results
+from indb import *
+from dataset import DataSet
 
 app = FastAPI()
-data_set_instances = []
+dataSet_instances = []
+data_processor = DataProcessor()
 
 
 @app.post("/upload-csv")
@@ -16,15 +18,32 @@ def upload_csv(file: UploadFile = File(...)):
     print(df.head())
 
     # Processar o DataFrame
-    data_df = process_dataframe(df)
-    print({"message": "Arquivo processado com sucesso."})
-    return data_df
+    data_processor.process_dataframe(df)
+
+    # Garantir que df foi inicializado corretamente
+    if data_processor.df is not None:
+        # Criar uma nova instância de DataSet e armazenar
+        data_processor.dataSet_instances.clear()  # Limpar instâncias anteriores
+        for index, row in data_processor.df.iterrows():
+            data_set = DataSet(pgn=row['pgn'], byte=row['byte_column'], sequence=row['data'].tolist())
+            data_processor.dataSet_instances.append(data_set)
+    else:
+        return {"message": "Erro ao processar o arquivo: Nenhum dado válido encontrado."}
+
+    return {"message": "Arquivo processado com sucesso."}
+
+
+
 
 
 @app.get("/get-results")
-def get_results(data_df):
-    return get_processed_results(data_df)
-
+def get_results():
+    if data_processor.dataSet_instances:
+        results = [data_set.__dict__ for data_set in data_processor.dataSet_instances]
+        print(results)
+        return {"results": results}
+    else:
+        return {"message": "Nenhum dado processado disponível."}
 
 if __name__ == '__main__':
     uvicorn.run(app, host='127.0.0.1', port=7777)
