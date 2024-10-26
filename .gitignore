@@ -1,0 +1,51 @@
+# Git ignore for React frontend, FastAPI backend, and Python virtual environment
+
+# Node modules
+frontend/node_modules
+backend/node_modules
+
+# Build directories
+frontend/build
+frontend/dist
+backend/build
+backend/dist
+
+# Logs and debug output
+*.log
+*.out
+*.err
+
+# Environment variable files
+.env
+frontend/.env
+backend/.env
+
+# Python cache files
+backend/__pycache__/
+*.pyc
+
+# IDE/editor specific files
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Miscellaneous
+.DS_Store
+*.swp
+
+# FastAPI specific
+backend/.mypy_cache/
+backend/.pytest_cache/
+backend/.coverage
+backend/coverage.xml
+
+# React specific
+frontend/.eslintcache
+frontend/.parcel-cache
+frontend/.next
+frontend/yarn.lock
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
