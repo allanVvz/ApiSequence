@@ -12,8 +12,8 @@ data_processor = DataProcessor()
 
 # Configuração do CORS
 origins = [
-    "http://localhost:3001",
-    "http://127.0.0.1:3001",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
 ]
 
 app.add_middleware(
@@ -51,7 +51,6 @@ async def upload_csv(file: UploadFile = File(...)):
 
 
 
-
 @app.get("/get-results")
 async def get_results():
     if data_processor.dataSet_instances:
@@ -62,4 +61,4 @@ async def get_results():
         return {"message": "Nenhum dado processado disponível."}
 
 if __name__ == '__main__':
-    uvicorn.run(app, host='127.0.0.1', port=7777)
+    uvicorn.run(app, host='127.0.0.1', port=8000)

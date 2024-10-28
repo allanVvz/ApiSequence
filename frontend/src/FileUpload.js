@@ -20,7 +20,7 @@ const FileUpload = () => {
     formData.append('file', selectedFile);
 
     try {
-      const response = await axios.post('http://127.0.0.1:7777/upload-csv', formData, {
+      const response = await axios.post('http://127.0.0.1:8000/upload-csv', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
